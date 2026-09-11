@@ -1,26 +1,68 @@
 /* 全局 SCSS 变量，uni-app 会自动注入到每个 scss 样式块中 */
+
+/* 行为相关颜色 */
 $uni-color-primary: #ff6b35;
 $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;
 $uni-color-error: #dd524d;
 
+/* 文字基本颜色 */
 $uni-text-color: #1f2329;
 $uni-text-color-inverse: #ffffff;
 $uni-text-color-grey: #8a8f99;
 $uni-text-color-placeholder: #b8bcc4;
+$uni-text-color-disable: #c0c0c0;
 
+/* 背景颜色 */
 $uni-bg-color: #ffffff;
 $uni-bg-color-grey: #f5f6f8;
+$uni-bg-color-hover: #f1f1f1;
+$uni-bg-color-mask: rgba(0, 0, 0, 0.4);
+
+/* 边框颜色 */
 $uni-border-color: #ebedf0;
 
+/* 文字尺寸 */
 $uni-font-size-sm: 24rpx;
 $uni-font-size-base: 28rpx;
 $uni-font-size-lg: 32rpx;
 
+/* 图片尺寸 */
+$uni-img-size-sm: 40rpx;
+$uni-img-size-base: 52rpx;
+$uni-img-size-lg: 80rpx;
+
+/* 圆角 */
+$uni-border-radius-sm: 8rpx;
+$uni-border-radius-base: 16rpx;
+$uni-border-radius-lg: 24rpx;
+$uni-border-radius-circle: 50%;
+
+/* 水平间距 */
+$uni-spacing-row-sm: 10rpx;
+$uni-spacing-row-base: 20rpx;
+$uni-spacing-row-lg: 30rpx;
+
+/* 垂直间距 */
+$uni-spacing-col-sm: 8rpx;
+$uni-spacing-col-base: 16rpx;
+$uni-spacing-col-lg: 24rpx;
+
+/* 通用间距（本项目一直沿用这套命名） */
 $uni-spacing-sm: 12rpx;
 $uni-spacing-base: 20rpx;
 $uni-spacing-lg: 32rpx;
 
-$uni-border-radius-sm: 8rpx;
-$uni-border-radius-base: 16rpx;
-$uni-border-radius-lg: 24rpx;
+/* 透明度 */
+$uni-opacity-disabled: 0.3;
+
+/* 文章场景相关 */
+$uni-color-title: #2c405a;
+$uni-font-size-title: 40rpx;
+$uni-color-subtitle: #555555;
+$uni-font-size-subtitle: 36rpx;
+$uni-color-paragraph: #3f536e;
+$uni-font-size-paragraph: 30rpx;
+
+/* uView UI 的主题变量，必须由 uni.scss 引入才会全局生效 */
+@import 'uview-ui/theme.scss';

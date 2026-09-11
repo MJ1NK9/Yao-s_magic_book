@@ -1,13 +1,13 @@
 {
   "name": "点餐小程序",
-  "appid": "",
-  "description": "基于 uni-app + Vue 3 的点餐小程序",
+  "appid": "wx49441cff40c6d8f4",
+  "description": "基于 uni-app + Vue 2 + uView UI 的点餐小程序",
   "versionName": "0.1.0",
   "versionCode": "100",
   "transformPx": false,
-  "vueVersion": "3",
+  "vueVersion": "2",
   "mp-weixin": {
-    "appid": "",
+    "appid": "wx49441cff40c6d8f4",
     "setting": {
       "urlCheck": false,
       "es6": true,

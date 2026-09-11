@@ -19,43 +19,46 @@
 
     <view v-if="totalCount > 0" class="bar" @click="goCart">
       <view class="bar__count">{{ totalCount }}</view>
-      <text class="bar__price">¥{{ totalPrice }}</text>
+      <text class="bar__price">♥{{ totalPrice }}</text>
       <text class="bar__action">去结算</text>
     </view>
   </view>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
 import DishCard from '@/components/DishCard.vue'
 import { categories, getDishesByCategory } from '@/mock/dishes.js'
-import { useCart } from '@/store/cart.js'
+import { addToCart, getCartTotalCount, getCartTotalPrice } from '@/store/cart.js'
 
 export default {
   components: { DishCard },
-  setup() {
-    const { totalCount, totalPrice, add } = useCart()
-    const activeCategory = ref(categories[0].id)
-
-    const currentDishes = computed(() => getDishesByCategory(activeCategory.value))
-    const activeCategoryName = computed(() => {
-      const hit = categories.find((item) => item.id === activeCategory.value)
-      return hit ? hit.name : ''
-    })
-
-    function goCart() {
-      uni.switchTab({ url: '/pages/cart/cart' })
-    }
-
+  data() {
     return {
       categories,
-      activeCategory,
-      activeCategoryName,
-      currentDishes,
-      totalCount,
-      totalPrice,
-      add,
-      goCart
+      activeCategory: categories[0].id
+    }
+  },
+  computed: {
+    currentDishes() {
+      return getDishesByCategory(this.activeCategory)
+    },
+    activeCategoryName() {
+      const hit = categories.find((item) => item.id === this.activeCategory)
+      return hit ? hit.name : ''
+    },
+    totalCount() {
+      return getCartTotalCount()
+    },
+    totalPrice() {
+      return getCartTotalPrice()
+    }
+  },
+  methods: {
+    add(dish) {
+      addToCart(dish)
+    },
+    goCart() {
+      uni.switchTab({ url: '/pages/cart/cart' })
     }
   }
 }
@@ -90,7 +93,7 @@ export default {
 .menu {
   flex: 1;
   height: 100%;
-  padding: 20rpx;
+  padding: 20rpx 20rpx 160rpx;
   box-sizing: border-box;
 }
 
@@ -104,7 +107,7 @@ export default {
   position: fixed;
   left: 24rpx;
   right: 24rpx;
-  bottom: 24rpx;
+  bottom: calc(24rpx + var(--window-bottom, 0px));
   height: 96rpx;
   display: flex;
   align-items: center;

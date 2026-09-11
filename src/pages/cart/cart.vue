@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <view v-if="items.length === 0" class="empty">
-      <text class="empty__text">购物车还是空的</text>
+      <u-empty mode="car" text="购物车还是空的" icon-size="140" />
       <view class="empty__btn" @click="goMenu">去点餐</view>
     </view>
 
@@ -13,9 +13,14 @@
             <text class="row__unit">¥{{ item.price }}</text>
           </view>
           <view class="row__ops">
-            <view class="row__op" @click="minus(item.id)">-</view>
-            <text class="row__count">{{ item.count }}</text>
-            <view class="row__op row__op--add" @click="add(item)">+</view>
+            <u-number-box
+              :value="item.count"
+              :min="0"
+              :max="99"
+              button-size="26"
+              input-width="40"
+              @change="onCountChange(item.id, $event)"
+            />
           </view>
         </view>
       </view>
@@ -32,29 +37,35 @@
 </template>
 
 <script>
-import { useCart } from '@/store/cart.js'
-import { useOrders } from '@/store/orders.js'
+import { cartState, clearCart, getCartTotalPrice, setCartCount } from '@/store/cart.js'
+import { createOrder } from '@/store/orders.js'
 
 export default {
-  setup() {
-    const { items, totalPrice, add, minus, clear } = useCart()
-    const { create } = useOrders()
-
-    function goMenu() {
-      uni.switchTab({ url: '/pages/index/index' })
+  computed: {
+    items() {
+      return cartState.items
+    },
+    totalPrice() {
+      return getCartTotalPrice()
     }
-
-    function submit() {
-      if (items.value.length === 0) return
-      create(items.value, totalPrice.value)
-      clear()
+  },
+  methods: {
+    // u-number-box 的 change 事件回传 { value, name }
+    onCountChange(id, event) {
+      setCartCount(id, event.value)
+    },
+    goMenu() {
+      uni.switchTab({ url: '/pages/index/index' })
+    },
+    submit() {
+      if (this.items.length === 0) return
+      createOrder(this.items, this.totalPrice)
+      clearCart()
       uni.showToast({ title: '下单成功', icon: 'success' })
       setTimeout(() => {
         uni.switchTab({ url: '/pages/order/order' })
       }, 600)
     }
-
-    return { items, totalPrice, add, minus, goMenu, submit }
   }
 }
 </script>
@@ -67,15 +78,10 @@ export default {
 }
 
 .empty {
-  padding-top: 240rpx;
+  padding-top: 180rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.empty__text {
-  font-size: 28rpx;
-  color: #8a8f99;
 }
 
 .empty__btn {
@@ -117,33 +123,11 @@ export default {
   align-items: center;
 }
 
-.row__op {
-  width: 48rpx;
-  height: 48rpx;
-  line-height: 44rpx;
-  text-align: center;
-  font-size: 32rpx;
-  color: #ff6b35;
-  border: 1rpx solid #ff6b35;
-  border-radius: 50%;
-}
-
-.row__op--add {
-  color: #ffffff;
-  background-color: #ff6b35;
-}
-
-.row__count {
-  min-width: 56rpx;
-  text-align: center;
-  font-size: 28rpx;
-}
-
 .footer {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: var(--window-bottom, 0px);
   height: 112rpx;
   display: flex;
   align-items: center;

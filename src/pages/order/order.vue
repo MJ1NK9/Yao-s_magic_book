@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <view v-if="orders.length === 0" class="empty">
-      <text class="empty__text">还没有订单</text>
+      <u-empty mode="order" text="还没有订单" icon-size="140" />
       <text class="empty__tip">下单后会显示在这里</text>
     </view>
 
@@ -25,12 +25,13 @@
 </template>
 
 <script>
-import { useOrders } from '@/store/orders.js'
+import { ordersState } from '@/store/orders.js'
 
 export default {
-  setup() {
-    const { orders } = useOrders()
-    return { orders }
+  computed: {
+    orders() {
+      return ordersState.list
+    }
   }
 }
 </script>
@@ -43,15 +44,10 @@ export default {
 }
 
 .empty {
-  padding-top: 240rpx;
+  padding-top: 180rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.empty__text {
-  font-size: 28rpx;
-  color: #8a8f99;
 }
 
 .empty__tip {

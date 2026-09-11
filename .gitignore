@@ -11,3 +11,6 @@ npm-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.local
+
+# 微信开发者工具的本机私有配置，不提交
+project.private.config.json

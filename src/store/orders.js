@@ -1,7 +1,7 @@
-import { reactive, computed } from 'vue'
+import Vue from 'vue'
 
 // 订单只存在内存里，刷新即清空；后续接后端时改成请求接口
-const state = reactive({
+export const ordersState = Vue.observable({
   list: []
 })
 
@@ -19,15 +19,11 @@ function formatTime(date) {
   )
 }
 
-function create(items, totalPrice) {
-  state.list.unshift({
+export function createOrder(items, totalPrice) {
+  ordersState.list.unshift({
     id: 'NO' + Date.now(),
     items: items.map((item) => ({ id: item.id, name: item.name, price: item.price, count: item.count })),
     totalPrice,
     createdAt: formatTime(new Date())
   })
-}
-
-export function useOrders() {
-  return { orders: computed(() => state.list), create }
 }
