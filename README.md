@@ -68,7 +68,6 @@ Yao-s_magic_book
 
 ## 下一步 TODO
 
-- [ ] 在 `src/manifest.json` 的 `mp-weixin.appid` 填上自己的小程序 AppID
 - [ ] 把 `src/mock/dishes.js` 换成后端接口
 - [ ] 接入微信支付、桌号/取餐号、订单状态流转
 - [ ] 状态变复杂后，把 `src/store` 换成 pinia
