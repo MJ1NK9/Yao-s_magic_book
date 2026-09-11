@@ -1,6 +1,6 @@
 # Yao-s_magic_book 点餐小程序
 
-基于 **uni-app + Vue 3 + JavaScript** 的微信小程序骨架工程。
+基于 **uni-app + Vue 2 + JavaScript** Codex开发的微信小程序工程。
 
 ## 环境要求
 
@@ -10,7 +10,7 @@
 > **关于版本锁定**：本工程把 `vite` 锁在 `5.2.8`、`sass` 锁在 `~1.77.8`、
 > uni-app 锁在 `3.0.0-alpha-5020520260829001`。这套组合兼容 Node < 20.19 的环境。
 > 如果以后把 Node 升到 20.19+ 或 22.12+，可以换成最新版 uni-app
-> （安装时用 `@vue3` 标签，例如 `npm i @dcloudio/uni-app@vue3`）。
+> （安装时用 `@vue2` 标签，例如 `npm i @dcloudio/uni-app@vue2`）。
 
 ## 安装依赖
 
