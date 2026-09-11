@@ -1,0 +1,26 @@
+/* 全局 SCSS 变量，uni-app 会自动注入到每个 scss 样式块中 */
+$uni-color-primary: #ff6b35;
+$uni-color-success: #4cd964;
+$uni-color-warning: #f0ad4e;
+$uni-color-error: #dd524d;
+
+$uni-text-color: #1f2329;
+$uni-text-color-inverse: #ffffff;
+$uni-text-color-grey: #8a8f99;
+$uni-text-color-placeholder: #b8bcc4;
+
+$uni-bg-color: #ffffff;
+$uni-bg-color-grey: #f5f6f8;
+$uni-border-color: #ebedf0;
+
+$uni-font-size-sm: 24rpx;
+$uni-font-size-base: 28rpx;
+$uni-font-size-lg: 32rpx;
+
+$uni-spacing-sm: 12rpx;
+$uni-spacing-base: 20rpx;
+$uni-spacing-lg: 32rpx;
+
+$uni-border-radius-sm: 8rpx;
+$uni-border-radius-base: 16rpx;
+$uni-border-radius-lg: 24rpx;
