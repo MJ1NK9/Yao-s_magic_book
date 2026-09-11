@@ -1,4 +1,4 @@
-# ordering-app 点餐小程序
+# Yao-s_magic_book 点餐小程序
 
 基于 **uni-app + Vue 3 + JavaScript** 的微信小程序骨架工程。
 
@@ -43,7 +43,7 @@ npm run dev:h5
 ## 目录结构
 
 ```
-ordering-app
+Yao-s_magic_book
 ├─ index.html              H5 入口模板
 ├─ vite.config.js          Vite + uni-app 插件配置
 └─ src
